@@ -1,4 +1,4 @@
-package edu.regis.MSSE670.InvenStory.Domain;
+package edu.regis.msse670.invenstory.domain;
 
 import static org.junit.Assert.*;
 

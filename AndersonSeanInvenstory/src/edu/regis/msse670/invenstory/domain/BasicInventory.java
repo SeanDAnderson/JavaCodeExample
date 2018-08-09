@@ -1,4 +1,4 @@
-package edu.regis.MSSE670.InvenStory.Domain;
+package edu.regis.msse670.invenstory.domain;
 
 /**
  * BasicInventory is the most basic implementation of the Inventory abstact class.
@@ -9,7 +9,7 @@ package edu.regis.MSSE670.InvenStory.Domain;
  * @author Sean
  * @version 1.0
  */
-public class BasicInventory extends Inventory implements Storable {
+public class BasicInventory extends Inventory {
 
 	
 	/**

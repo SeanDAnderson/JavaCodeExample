@@ -1,10 +1,10 @@
-package edu.regis.MSSE670.InvenStory.Domain;
+package edu.regis.msse670.invenstory.domain;
 
 import java.util.Arrays;
 
 /**
  * The <code>Inventory</code> class represents objects which can contain other
- * <code>Storable</code> objects in an internal inventory array. It is abstract,
+ * <code>Inventory</code> objects in an internal inventory array. It is abstract,
  * and cannot be implemented itself. Rather it is extended into the classes:
  * <code>WorldInv</code>, <code>BasicInv</code>
  * And future classes:
@@ -28,7 +28,7 @@ public abstract class Inventory {
 	 * The maximum number of stored objects is defined by <code>inventoryMax</code>
 	 * and the current number of stored items is tracked by <code>inventoryStored</code>.
 	 */
-	protected Storable objectInventory[];
+	protected Inventory objectInventory[];
 	
 	/**Value sets the maximum stored objects. 0 allows no storage*/
 	protected int inventoryMax;
@@ -80,14 +80,14 @@ public abstract class Inventory {
 	/**
 	 * @return the objectInventory
 	 */
-	public Storable[] getObjectInventory() {
+	public Inventory[] getObjectInventory() {
 		return objectInventory;
 	}
 
 	/**
 	 * @param objectInventory the objectInventory to set
 	 */
-	public void setObjectInventory(Storable[] objectInventory) {
+	public void setObjectInventory(Inventory[] objectInventory) {
 		this.objectInventory = objectInventory;
 	}
 

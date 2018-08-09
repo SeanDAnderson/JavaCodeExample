@@ -1,4 +1,4 @@
-package edu.regis.MSSE670.InvenStory.Domain;
+package edu.regis.msse670.invenstory.domain;
 
 /**
  * WorldInventory is the lowest tier inventory in the inventory heirarchy. 
