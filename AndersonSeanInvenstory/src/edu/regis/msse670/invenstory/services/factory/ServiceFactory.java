@@ -19,6 +19,7 @@ public class ServiceFactory {
 	
 /** 
  * getFactory returns a reference to the single ServiceFactory instance.
+ * @return	ServiceFactory instance reference. 
  * */
 	
 	public static ServiceFactory getFactory(){
@@ -28,6 +29,8 @@ public class ServiceFactory {
 	/** 
 	 * getService attempts to find the service interface associated with the input service name
 	 * and return an instance of that service object.
+	 * @param	serviceName String of the name of the desired service
+	 * @return	IService implementing class object associated with the service name
 	 * */
 	public IService getService(String serviceName) throws ServiceNotFoundException{
 		try{
@@ -43,6 +46,8 @@ public class ServiceFactory {
 	/** 
 	 * getImplName loads and searches the properties file for the desired service name
 	 * and returns the String name of the service implementation, if found
+	 * @param serviceName String name of the desired service
+	 * @return String returns the property associated with the service name in the properties file
 	 * */
 	private String getImplName(String serviceName) throws Exception {
 		java.util.Properties properties = new java.util.Properties();

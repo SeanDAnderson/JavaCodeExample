@@ -43,5 +43,7 @@ public class WorldInventory extends Inventory {
 	public void setTier(byte tier){
 	 System.out.println("World Inventory tier cannot be changed.");
 	}
+	
+
 
 }

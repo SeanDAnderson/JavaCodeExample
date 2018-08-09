@@ -1,5 +1,11 @@
 package edu.regis.msse670.invenstory.services.exception;
 
+/**
+ * Exception for handling failed Service lookups
+ * 
+ * @author Maledictor
+ *
+ */
 public class ServiceNotFoundException extends Exception {
 
 	private static final long serialVersionUID = -8470029346801255710L;

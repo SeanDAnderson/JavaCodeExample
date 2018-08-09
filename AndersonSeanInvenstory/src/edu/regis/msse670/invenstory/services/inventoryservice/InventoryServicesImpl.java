@@ -23,6 +23,7 @@ public class InventoryServicesImpl implements IInventoryServices {
 	 * 
 	 * @param	inventory	Inventory object that an object is being added to
 	 * @param	item	Inventory object being added to inventory
+	 * @return	Boolean indicating the success (true) or failure (false) of the operation
 	 * */
 	public boolean addToNext(Inventory inventory, Inventory item) throws NullInventoryException {
 		System.out.println("Entering Method InventoryServicesImpl::addToInventory");
@@ -39,6 +40,7 @@ public class InventoryServicesImpl implements IInventoryServices {
 	 * validateInventoryName checks that the inventory name is not null.
 	 * 
 	 * @param	name	String to be validated as an object name
+	 * @return	Boolean indicating the success (true) or failure (false) of the operation
 	 * */
 	public boolean validateInventoryName(String name) {
 		System.out.println("Entering Method InventoryServicesImpl::validateInventoryName");
@@ -59,6 +61,7 @@ public class InventoryServicesImpl implements IInventoryServices {
 	 * 
 	 * @param	inventory	Inventory object being checked for legal item addition
 	 * @param	item	Inventory object being checked to be added to inventory
+	 * @return	Boolean indicating the success (true) or failure (false) of the operation
 	 * */	
 	private boolean checkInventoryAdd(Inventory inventory, Inventory item) throws NullInventoryException{
 		System.out.println("Entering Method InventoryServicesImpl::checkInventoryAdd");

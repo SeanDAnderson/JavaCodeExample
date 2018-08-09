@@ -83,4 +83,64 @@ public class WorldInventoryServicesImplTest {
 			fail("ServiceNotFoundException");
 		}
 	}
+	
+	/**
+	 * 
+	 */
+	@Test
+	public void testSaveWorldInventory() {
+		WorldInventory worldInventory = new WorldInventory("TheWorld");
+		WorldInventory loadedWorldInventory = null;
+		
+		try{
+			IInventoryServices inventoryServices = (IInventoryServices) serviceFactory.getService("IInventoryServices");
+			IWorldInventoryServices worldInventoryServices = (IWorldInventoryServices) serviceFactory.getService("IWorldInventoryServices");
+			System.out.println("Preparing to populate WorldInventory");
+			for(int i = 0; i < 10; i++){
+				inventoryServices.addToNext(worldInventory, new BasicInventory("NameA" + i, (byte) 5, 10));
+				System.out.println(worldInventory.getObjectInventory().get(i).getName() + " added.");
+				if (i == 2){
+					inventoryServices.addToNext(worldInventory.getObjectInventory().get(2), new BasicInventory("NameB2", (byte) 5, 4));
+				}
+			}
+			
+			System.out.println("Saving: " + worldInventory.getName());
+			for (int i = 0; i < worldInventory.getInventoryStored(); i++){
+				System.out.println(worldInventory.getObjectInventory().get(i).getName());
+				if (i == 2){
+					System.out.println(worldInventory.getObjectInventory().get(2).getObjectInventory().get(0).getName());
+				}
+			}
+			
+			worldInventoryServices.saveWorldInventory(worldInventory);
+			loadedWorldInventory = worldInventoryServices.loadWorldInventory("TheWorld.ser");
+			
+			System.out.println("Loaded: " + loadedWorldInventory.getName());
+			for (int i = 0; i < loadedWorldInventory.getInventoryStored(); i++){
+				System.out.println(loadedWorldInventory.getObjectInventory().get(i).getName());
+				if (i == 2){
+					System.out.println(loadedWorldInventory.getObjectInventory().get(2).getObjectInventory().get(0).getName());
+				}
+			}
+			
+		}
+		catch (NullInventoryException nie) {
+			nie.printStackTrace();
+			fail("NullInventoryException");
+		}
+		catch (ServiceNotFoundException snfe){
+			snfe.printStackTrace();
+			fail("ServiceNotFoundException");
+		}
+		catch (WorldInventorySaveException wise){
+			wise.printStackTrace();
+			fail("WorldInventorySaveException");
+		}
+		catch (WorldInventoryLoadException wile){
+			wile.printStackTrace();
+			fail("WorldInventoryLoadException");
+		}
+		assertTrue(worldInventory.equals(loadedWorldInventory));
+		System.out.println("testSaveWorldInventory succeed?");
+	}
 }
