@@ -1,4 +1,4 @@
-package edu.regis.MSSE670.InvenStory.Domain;
+package edu.regis.msse670.invenstory.domain;
 /**
  * The <code>Storable</code> interface is used to designate objects that can be
  * stored within an <code>Inventory</code>'s internal inventory array.
