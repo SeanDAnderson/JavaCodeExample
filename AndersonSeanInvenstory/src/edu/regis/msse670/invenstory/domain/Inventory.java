@@ -1,6 +1,7 @@
 package edu.regis.msse670.invenstory.domain;
 
-import java.util.Arrays;
+import java.util.*;
+import java.io.*;
 
 /**
  * The <code>Inventory</code> class represents objects which can contain other
@@ -12,7 +13,9 @@ import java.util.Arrays;
  * @author Sean
  *
  */
-public abstract class Inventory {
+public abstract class Inventory implements Serializable {
+
+	private static final long serialVersionUID = -874226773898054104L;
 
 	/**The value is used as the primary identifier for the object and must be unique. */
 	public String name;
@@ -24,11 +27,11 @@ public abstract class Inventory {
 	 */
 	protected byte tier;
 	
-	/**The array acts as 'storage' for other <code>Storable</code> objects.
+	/**The ArrayList acts as 'storage' for other <code>Inventory</code> objects.
 	 * The maximum number of stored objects is defined by <code>inventoryMax</code>
 	 * and the current number of stored items is tracked by <code>inventoryStored</code>.
 	 */
-	protected Inventory objectInventory[];
+	protected ArrayList<Inventory> objectInventory;
 	
 	/**Value sets the maximum stored objects. 0 allows no storage*/
 	protected int inventoryMax;
@@ -80,14 +83,14 @@ public abstract class Inventory {
 	/**
 	 * @return the objectInventory
 	 */
-	public Inventory[] getObjectInventory() {
+	public ArrayList<Inventory> getObjectInventory() {
 		return objectInventory;
 	}
 
 	/**
 	 * @param objectInventory the objectInventory to set
 	 */
-	public void setObjectInventory(Inventory[] objectInventory) {
+	public void setObjectInventory(ArrayList<Inventory> objectInventory) {
 		this.objectInventory = objectInventory;
 	}
 
@@ -119,6 +122,7 @@ public abstract class Inventory {
 		this.inventoryStored = inventoryStored;
 	}
 
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -129,10 +133,11 @@ public abstract class Inventory {
 		result = prime * result + inventoryMax;
 		result = prime * result + inventoryStored;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + Arrays.hashCode(objectInventory);
+		result = prime * result + ((objectInventory == null) ? 0 : objectInventory.hashCode());
 		result = prime * result + tier;
 		return result;
 	}
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
@@ -155,7 +160,10 @@ public abstract class Inventory {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (!Arrays.equals(objectInventory, other.objectInventory))
+		if (objectInventory == null) {
+			if (other.objectInventory != null)
+				return false;
+		} else if (!objectInventory.equals(other.objectInventory))
 			return false;
 		if (tier != other.tier)
 			return false;

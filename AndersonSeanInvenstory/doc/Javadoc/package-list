@@ -1,2 +1,6 @@
 edu.regis.msse670.invenstory.domain
 edu.regis.msse670.invenstory.services
+edu.regis.msse670.invenstory.services.exception
+edu.regis.msse670.invenstory.services.factory
+edu.regis.msse670.invenstory.services.inventoryservice
+edu.regis.msse670.invenstory.services.worldinventoryservice

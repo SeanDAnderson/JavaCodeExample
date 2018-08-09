@@ -1,5 +1,7 @@
 package edu.regis.msse670.invenstory.domain;
 
+import java.util.ArrayList;
+
 /**
  * WorldInventory is the lowest tier inventory in the inventory heirarchy. 
  * All other inventories must be stored within the WorldInventory,
@@ -13,8 +15,8 @@ package edu.regis.msse670.invenstory.domain;
  */
 public class WorldInventory extends Inventory {
 
+	private static final long serialVersionUID = -6580642006550001475L;
 
-	
 	/**Allocated a new WorldInventory object 
 	 * 
 	 * @param	name	String defining the inventory's ID, should be unique
@@ -31,6 +33,7 @@ public class WorldInventory extends Inventory {
 		tier = 0;
 		
 		inventoryStored = 0;
+		objectInventory = new ArrayList<Inventory>(100);
 	}
 	
 	@Override

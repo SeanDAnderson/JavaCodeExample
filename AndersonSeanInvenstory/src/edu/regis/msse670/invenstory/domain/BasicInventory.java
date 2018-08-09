@@ -1,5 +1,7 @@
 package edu.regis.msse670.invenstory.domain;
 
+import java.util.*;
+
 /**
  * BasicInventory is the most basic implementation of the Inventory abstact class.
  * It contains a unique identifying name, a tier and a <code>Storable</code> array.
@@ -11,7 +13,8 @@ package edu.regis.msse670.invenstory.domain;
  */
 public class BasicInventory extends Inventory {
 
-	
+	private static final long serialVersionUID = 2329312783652212227L;
+
 	/**
 	 * Allocates a new inventory object.
 	 * 
@@ -23,7 +26,7 @@ public BasicInventory(String name, byte tier, int inventoryMax){
 	this.tier = tier;
 	this.inventoryMax = inventoryMax;
 	inventoryStored = 0;
-	
+	objectInventory = new ArrayList<Inventory>(inventoryMax);
 	
 }	
 
