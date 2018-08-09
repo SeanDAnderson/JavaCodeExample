@@ -54,7 +54,6 @@ public class WorldInventoryJPanel extends JPanel {
 		newWorldInventoryNameText = new JTextArea("New World Inventory Name", 1, 20);
 		
 		this.add(worldInventoryLabel);
-		this.add(saveWorldInventoryButton);
 		this.add(worldInventoryName);
 		this.add(viewWorldInventoryButton);
 		this.add(newWorldInventoryNameText);

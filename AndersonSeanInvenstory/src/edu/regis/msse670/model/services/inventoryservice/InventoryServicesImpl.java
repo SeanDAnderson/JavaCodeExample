@@ -69,18 +69,28 @@ public class InventoryServicesImpl implements IInventoryServices {
 		System.out.println("Entering Method InventoryServicesImpl::checkInventoryAdd");
 				
 		try{
-		//inventory space check
-		if(inventory.getInventoryStored() >= inventory.getInventoryMax()) {
-			System.out.println("Inventory is full");
-			return false;
-		}
+			//Mote tier placement check
+			//No item can be placed within a Mote
+			if(inventory.getTier() == 127){
+				System.out.println("Item cannot be placed in a Mote.");
+				return false;
+			}
+			
+			//inventory space check
+			if(inventory.getInventoryStored() >= inventory.getInventoryMax()) {
+				System.out.println("Inventory is full");
+				return false;
+			}
 		
-		//Legal tier placement check
-		//Items cannot be placed into inventories of a lower tier.
-		if(inventory.getTier() > item.getTier()){
-			System.out.println("This item cannot be placed in an inventory of " + inventory.getTier());
-			return false;
-		}
+			//Legal tier placement check
+			//Items cannot be placed into inventories of a lower tier.
+			if(inventory.getTier() > item.getTier()){
+				System.out.println("This item cannot be placed in an inventory of " + inventory.getTier());
+				return false;
+			}
+		
+		
+		
 		}
 		catch (NullPointerException e){
 			throw new NullInventoryException("Cannot add item to null inventory!", e);

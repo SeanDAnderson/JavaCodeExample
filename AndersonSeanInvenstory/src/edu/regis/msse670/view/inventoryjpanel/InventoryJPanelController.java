@@ -5,9 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import edu.regis.msse670.model.business.manager.InventoryManager;
-import edu.regis.msse670.model.domain.BasicInventory;
 import edu.regis.msse670.model.domain.DataSphere;
-import edu.regis.msse670.view.worldinventoryjpanel.WorldInventoryJPanel;
 
 public class InventoryJPanelController implements ActionListener {
 	
@@ -26,7 +24,10 @@ public class InventoryJPanelController implements ActionListener {
 		dataSphere = ds;
 		inventoryManager = new InventoryManager();
 		
-		inventoryJPanel.getAddButton().addActionListener(this);
+		inventoryJPanel.getBIAddButton().addActionListener(this);
+		inventoryJPanel.getRIAddButton().addActionListener(this);
+		inventoryJPanel.getIIAddButton().addActionListener(this);
+		inventoryJPanel.getMoteAddButton().addActionListener(this);
 	}
 	
 	
@@ -34,21 +35,82 @@ public class InventoryJPanelController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 
-		if(e.getSource().equals(inventoryJPanel.getAddButton())){
-			addToWorldInventory();
+		if(e.getSource().equals(inventoryJPanel.getBIAddButton())){
+			addBIToWorldInventory();
 		}
+		if(e.getSource().equals(inventoryJPanel.getRIAddButton())){
+			addRIToWorldInventory();
+		}
+		if(e.getSource().equals(inventoryJPanel.getIIAddButton())){
+			addIIToWorldInventory();
+		}
+		if(e.getSource().equals(inventoryJPanel.getMoteAddButton())){
+			addMoteToWorldInventory();
+		}
+		
 
 	}
 	
 	/**
-	 * Adds a newly created Inventory item to the World Inventory
+	 * Adds a newly created Basic Inventory item to the World Inventory
 	 */
-	private void addToWorldInventory(){
+	private void addBIToWorldInventory(){
 						
 		if (dataSphere.getWorldInventory() != null){
 			System.out.println("Adding inventory to WorldInventory");
 			dataSphere.setInventory1(dataSphere.getWorldInventory());
-			dataSphere.setInventory2(inventoryJPanel.getInventory());
+			dataSphere.setInventory2(inventoryJPanel.getBasicInventory());
+			inventoryManager.performAction("addToInventory", dataSphere);
+		}
+		else{
+			System.out.println("No World Inventory");
+			JOptionPane.showMessageDialog(inventoryJPanel.getJFrame(), "You must have an active World Inventory first.");
+		}
+	}
+	
+	/**
+	 * Adds a newly created Region Inventory item to the World Inventory
+	 */
+	private void addRIToWorldInventory(){
+		
+		if (dataSphere.getWorldInventory() != null){
+			System.out.println("Adding Region to WorldInventory");
+			dataSphere.setInventory1(dataSphere.getWorldInventory());
+			dataSphere.setInventory2(inventoryJPanel.getRegion());
+			inventoryManager.performAction("addToInventory", dataSphere);
+		}
+		else{
+			System.out.println("No World Inventory");
+			JOptionPane.showMessageDialog(inventoryJPanel.getJFrame(), "You must have an active World Inventory first.");
+		}
+	}
+	
+	/**
+	 * Adds a newly created Item Inventory item to the World Inventory
+	 */
+	private void addIIToWorldInventory(){
+		
+		if (dataSphere.getWorldInventory() != null){
+			System.out.println("Adding Item to WorldInventory");
+			dataSphere.setInventory1(dataSphere.getWorldInventory());
+			dataSphere.setInventory2(inventoryJPanel.getItem());
+			inventoryManager.performAction("addToInventory", dataSphere);
+		}
+		else{
+			System.out.println("No World Inventory");
+			JOptionPane.showMessageDialog(inventoryJPanel.getJFrame(), "You must have an active World Inventory first.");
+		}
+	}
+	
+	/**
+	 * Adds a newly created Mote Inventory item to the World Inventory
+	 */
+	private void addMoteToWorldInventory(){
+		
+		if (dataSphere.getWorldInventory() != null){
+			System.out.println("Adding Mote to WorldInventory");
+			dataSphere.setInventory1(dataSphere.getWorldInventory());
+			dataSphere.setInventory2(inventoryJPanel.getMote());
 			inventoryManager.performAction("addToInventory", dataSphere);
 		}
 		else{

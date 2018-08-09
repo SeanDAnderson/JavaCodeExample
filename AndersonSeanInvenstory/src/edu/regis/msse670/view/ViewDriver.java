@@ -7,7 +7,7 @@ public class ViewDriver {
 
 	public ViewDriver(){
 		MainJFrame mainJFrame = new MainJFrame();
-		MainJFrameController mainJFrameController = new MainJFrameController();
+		//MainJFrameController mainJFrameController = new MainJFrameController();
 	}
 	
 	public static void main(String args[]){
