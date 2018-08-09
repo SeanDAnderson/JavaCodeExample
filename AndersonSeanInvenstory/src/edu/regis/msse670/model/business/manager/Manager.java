@@ -61,7 +61,8 @@ public abstract class Manager {
 	 * @throws PropertiesFileNotFoundException
 	 */
 	public static void loadProperties () throws PropertiesFileNotFoundException {
-		String propertyFileLocation = System.getProperty("prop_location");
+		String propertyFileLocation = "src/config/application.properties"; 
+				//System.getProperty("prop_location");
 		
 		if (propertyFileLocation != null){
 			PropertiesCustodian.loadProperties(propertyFileLocation);

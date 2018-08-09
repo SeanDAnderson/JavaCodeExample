@@ -53,7 +53,7 @@ public class ServiceFactory {
 		java.util.Properties properties = new java.util.Properties();
 		
 		//getting the location of the properties file from the system settings
-		String propertyFileLocation = System.getProperty("prop_location");
+		String propertyFileLocation = "src/config/application.properties"; 
 		
 		//system out to verify value for testing
 		System.out.println("Proterty file location: " + propertyFileLocation);
